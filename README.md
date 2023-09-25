@@ -4,7 +4,7 @@
 
 1. Create an S3 bucket for the Terraform remote state file
    a. Change the location of the terraform state to use already created bucket
-2.Creating the networking layer
+2. Creating the networking layer
    a. Create a VPC and enable VPC Flow Logs
           i. Create an appropriate IAM role for the VPC Flow Logs
    b. Create the necessary subnets in each of 2 different AZs (6 subnets in total)
