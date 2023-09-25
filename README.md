@@ -1,6 +1,6 @@
-BYOI => HRISTO DIMITROV
+### Build Your Own Infrastructure ###
 
-#SOLUTION 1
+### TASK ###
 
 1. Create an S3 bucket for the Terraform remote state file
    a. Change the location of the terraform state to use already created bucket
@@ -30,8 +30,8 @@ BYOI => HRISTO DIMITROV
     b. Create launch template/configuration for the application instances
     c. Select the newest Amazon Linux for your launch configuration's AMI
     d. Use the created IAM role in the launch configuration
-    e. Install and configure nginx/httpd with PHP to be used as a web server for the WordPress installation
-    f. Install and setup WordPress using the RDS as a database
+    e. Install and configure httpd with PHP to be used as a web server
+    f. Pull the web application from https://github.com/HristoDimitrovv/web-app and send the .sql file information to the DB from a mysql client on the web server
     g. You must include installation and setup of the CloudWatch Аgent as part of the bootstrap
     h. Export /var/log/messages to CloudWatch Logs
     i. Export a custom metric for the memory and disk usage to CloudWatch
