@@ -1,3 +1,10 @@
+### Data related to the default VPC, SG and Subnet if there is no specified in the root module ###
+
+data "aws_vpc" "default" {
+  default = true
+}
+
+
 data "aws_security_group" "default" {
   count = var.security_groups == null ? 1 : 0
   filter {
@@ -9,11 +16,6 @@ data "aws_security_group" "default" {
     name   = "group-name"
     values = ["default"]
   }
-}
-
-
-data "aws_vpc" "default" {
-  default = true
 }
 
 

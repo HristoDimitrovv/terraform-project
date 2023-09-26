@@ -6,7 +6,7 @@ resource "aws_autoscaling_group" "asg" {
   desired_capacity          = var.desired_capacity
   health_check_grace_period = var.health_check_grace_period
   health_check_type         = var.health_check_type
-  vpc_zone_identifier       = var.vpc_zone_identifier
+  vpc_zone_identifier       = local.vpc_zone_identifier
   target_group_arns         = [var.target_group_arns]
 
   launch_template {
@@ -21,7 +21,7 @@ resource "aws_launch_template" "web" {
   name                   = var.launch_template_name
   image_id               = var.image_id
   instance_type          = var.instance_type
-  vpc_security_group_ids = var.vpc_security_group_ids
+  vpc_security_group_ids = local.vpc_security_group_ids
   user_data              = var.user_data
   iam_instance_profile {
     name = aws_iam_instance_profile.ec2_profile.name

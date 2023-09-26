@@ -7,10 +7,10 @@ locals {
     : var.vpc_id
   )
 
-  subnet_ids = (
-    var.subnet_ids == null
+  vpc_zone_identifier = (
+    var.vpc_zone_identifier == null
     ? [data.aws_subnets.default[0].ids[0]]
-    : var.subnet_ids
+    : var.vpc_zone_identifier
   )
 
   vpc_security_group_ids = (

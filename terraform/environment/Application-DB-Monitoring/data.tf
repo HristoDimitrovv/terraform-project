@@ -1,13 +1,17 @@
+### Retrieve the outputs from the Networking ###
+
 data "terraform_remote_state" "vpc" {
   backend = "s3"
   config = {
-    bucket = "hrdimibucket2222222"
+    bucket = "hrdimibucket222222"
     key    = "./vpc-terraform.tfstate"
     region = "us-east-1"
   }
 }
 
+
 ### Take the latest AMI for Amazon Linux 2 ###
+
 data "aws_ami" "latest_amazon_linux_2" {
   most_recent = true
   owners      = ["amazon"]
@@ -23,7 +27,9 @@ data "aws_ami" "latest_amazon_linux_2" {
   }
 }
 
+
 ### Retrieve the running instances IDs ###
+
 data "aws_instances" "running-instances" {
   instance_state_names = ["running"]
 }

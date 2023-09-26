@@ -74,9 +74,9 @@ variable "health_check" {
   default = {
     healthy_threshold   = 5
     unhealthy_threshold = 10
-    timeout             = 10
+    timeout             = 5
     enabled             = true
-    interval            = 5
+    interval            = 10
     port                = 80
     protocol            = "HTTP"
     matcher             = "200-299,301"

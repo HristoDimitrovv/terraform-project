@@ -13,7 +13,7 @@ module "byoi_rds" {
   port                    = var.db_port
   skip_final_snapshot     = var.skip_final_snapshot
   multi_az                = var.multi_az
-  vpc_security_groups_ids = [aws_security_group.rds.id]
+  vpc_security_group_ids = [aws_security_group.rds.id]
 
   tags = {
     Deployment  = var.terraform

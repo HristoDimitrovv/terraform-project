@@ -9,7 +9,8 @@ module "byoi_asg" {
   health_check_grace_period = var.health_check_grace_period
   health_check_type         = var.health_check_type
   vpc_zone_identifier       = data.terraform_remote_state.vpc.outputs.private_subnets
-  target_group_arns         = data.terraform_remote_state.vpc.outputs.alb_target_group_arn
+  target_group_arns         = module.byoi_alb.alb_target_group_arn
+
   instance_refresh = {
     strategy = "Rolling"
     preferences = {
@@ -20,7 +21,6 @@ module "byoi_asg" {
   }
 
   ### Launch Template ###
-  template_version       = "$Latest"
   launch_template_name   = var.launch_template_name
   image_id               = data.aws_ami.latest_amazon_linux_2.id
   instance_type          = var.instance_type

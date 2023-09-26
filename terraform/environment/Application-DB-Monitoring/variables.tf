@@ -120,3 +120,50 @@ variable "terraform" {
   type    = string
   default = "true"
 }
+
+
+#########################################################
+
+### ALB variables ###
+variable "alb_name" {
+  description = "name of the ALB"
+  type        = string
+  default     = "byoi"
+}
+
+### Target Group with Health check ### 
+
+variable "alb_target_group" {
+  description = "Name of the target group"
+  type        = string
+  default     = "alb-target"
+}
+
+variable "target_group_port" {
+  description = "port to be used for the check"
+  type        = string
+  default     = "80"
+}
+
+variable "target_group_protocol" {
+  description = "Can be either HTTP or HTTPS"
+  type        = string
+  default     = "HTTP"
+}
+
+
+### HTTP Listener ###
+
+variable "listener_port" {
+  description = "port to be used for the listening"
+  type        = string
+  default     = "80"
+}
+
+variable "listener_protocol" {
+  description = "Can be either HTTP or HTTPS"
+  type        = string
+  default     = "HTTP"
+}
+
+#########################################################
