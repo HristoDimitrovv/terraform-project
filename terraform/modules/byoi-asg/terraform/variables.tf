@@ -87,12 +87,12 @@ variable "image_id" {
   type = string
 }
 
-variable "launch_template_name" {
-  type = string
-}
-
 variable "instance_refresh" {
   type = any
+}
+
+variable "launch_template_name" {
+  type = string
 }
 
 variable "vpc_security_group_ids" {
@@ -104,3 +104,24 @@ variable "vpc_id" {
   type        = string
   default     = null
 }
+
+
+# variable "instance_refresh" {
+#   description = "Instance refresh information"
+#   type = object({
+#     strategy  = string
+#     preferences = object({
+#       checkpoint_delay       = number
+#       instance_warmup        = number
+#       min_healthy_percentage = number
+#     })
+#   })
+#   default = {
+#     strategy = "Rolling"
+#     preferences = {
+#       checkpoint_delay       = 10
+#       instance_warmup        = 100
+#       min_healthy_percentage = 50
+#     }
+#   }
+# }

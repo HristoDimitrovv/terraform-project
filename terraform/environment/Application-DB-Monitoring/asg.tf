@@ -1,6 +1,6 @@
 ### Create the ASG ###
 module "byoi_asg" {
-  source = "../../modules/byoi-asg/"
+  source = "../../modules/byoi-asg/terraform"
 
   name                      = var.name
   max_size                  = var.max_size
@@ -11,7 +11,7 @@ module "byoi_asg" {
   vpc_zone_identifier       = data.terraform_remote_state.vpc.outputs.private_subnets
   target_group_arns         = module.byoi_alb.alb_target_group_arn
 
-  instance_refresh = {
+ instance_refresh = {
     strategy = "Rolling"
     preferences = {
       checkpoint_delay       = 10

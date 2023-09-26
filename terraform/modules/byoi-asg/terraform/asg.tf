@@ -15,7 +15,6 @@ resource "aws_autoscaling_group" "asg" {
   }
 }
 
-
 ### Create the Launch template ###
 resource "aws_launch_template" "web" {
   name                   = var.launch_template_name
