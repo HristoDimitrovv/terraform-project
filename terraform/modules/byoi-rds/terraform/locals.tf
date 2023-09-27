@@ -1,4 +1,4 @@
-### Locals to deploy the ALB in the default VPC, one of the defaul Subnets and the default SG if not specified in the root module ###
+### Locals to deploy the RDS in the default VPC, one of the defaul Subnets and the default SG if not specified in the root module ###
 
 locals {
   vpc_id = (

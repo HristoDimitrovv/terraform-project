@@ -11,14 +11,11 @@ module "byoi_asg" {
   vpc_zone_identifier       = data.terraform_remote_state.vpc.outputs.private_subnets
   target_group_arns         = module.byoi_alb.alb_target_group_arn
 
- instance_refresh = {
-    strategy = "Rolling"
-    preferences = {
-      checkpoint_delay       = 10
-      instance_warmup        = 100
-      min_healthy_percentage = 50
-    }
+  tags = {
+    Deployment  = var.terraform
+    Environment = var.environment
   }
+
 
   ### Launch Template ###
   launch_template_name   = var.launch_template_name

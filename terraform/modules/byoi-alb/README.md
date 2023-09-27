@@ -25,6 +25,17 @@ module "byoi_alb" {
   target_group_port     = "80"
   target_group_protocol = "HTTP"
 
+  health_check = {                                 /// Optional 
+    healthy_threshold   = 5
+    unhealthy_threshold = 10
+    timeout             = 5
+    enabled             = true
+    interval            = 10
+    port                = 80
+    protocol            = "HTTP"
+    matcher             = "200-299,301"
+  }
+
   ### Listener rule ###
 
   action_type       = "forward"                     /// Optional
@@ -32,7 +43,7 @@ module "byoi_alb" {
   listener_protocol = "HTTP""
 }
 
-    tags = {
+  tags = {
     Deployment  = "terraform"
     Environment = "dev"
   }
@@ -91,7 +102,10 @@ vpc_security_groups_ids list(string)
 Description : The security group ID for the ALB instance. If not specified it will be created in the default VPC SG.
 
 vpc_ids string
-Description : The VPC ID that you want to use. If you do not set it, it will use the default VPC ID
+Description : The VPC ID that you want to use. If you do not set it, it will use the default VPC ID.
+
+tags map(string)
+Description : Choose the tags to be applied to the bucket.
 
 health_check
 Description = Health check parameters. You can override them in the root module with "health_check = {}" and assign all field values as shown below
@@ -115,10 +129,6 @@ Description = Health check parameters. You can override them in the root module 
     protocol            = "HTTP"
     matcher             = "200-299,301"
   }
-
-
-tags map(string)
-Description : Choose the tags to be applied to the bucket.
 
 ```
 

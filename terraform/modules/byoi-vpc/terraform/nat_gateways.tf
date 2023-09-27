@@ -4,6 +4,7 @@ resource "aws_eip" "nat" {
   domain = "vpc"
 }
 
+
 ### NAT Gateway to server the application private subnet ###
 resource "aws_nat_gateway" "nat-gw" {
   count         = var.create_nat_gateway ? length(var.availability_zones) : 0

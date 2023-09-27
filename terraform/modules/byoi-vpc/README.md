@@ -26,7 +26,7 @@ module "byoi_vpc" {
   database_subnets         = ["10.1.31.0/24", "10.1.32.0/24"]
   vpc_flow_log_group       = "vpc_flow_logs_name"
 
-    tags = {
+  tags = {
     Deployment  = "terraform"
     Environment = "dev"
   }

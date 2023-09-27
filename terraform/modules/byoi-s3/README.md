@@ -14,7 +14,7 @@ module "byoi_s3" {
   enable_versioning = false
   enable_encryption = true
 
-    tags = {
+  tags = {
     Deployment  = "terraform"
     Environment = "dev"
   }

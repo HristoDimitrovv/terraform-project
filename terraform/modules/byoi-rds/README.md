@@ -26,9 +26,9 @@ module "byoi_rds" {
   multi_az                = false
   vpc_security_groups_ids = [aws_security_group.rds.id]   /// Optional
 
-    tags = {
-    Deployment  = var.terraform
-    Environment = var.environment
+  tags = {
+    Deployment  = "terraform"
+    Environment = "dev"
   }
 }
 ```

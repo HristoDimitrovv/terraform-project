@@ -6,47 +6,44 @@ variable "max_size" {
   type = number
 
 
- validation {
-  condition = var.max_size > 0 
-  error_message = "ASG can't be empty"
- }
+  validation {
+    condition     = var.max_size > 0
+    error_message = "ASG can't be empty"
+  }
 
- validation {
-  condition = var.max_size <=5
-  error_message = "ASGs must have 5 or fewer instances to keep costs down."
- }
+  validation {
+    condition     = var.max_size <= 10
+    error_message = "ASGs canno have more than 10 instances in order to keep cost down"
+  }
 }
-
 
 variable "min_size" {
   type = number
 
- validation {
-  condition = var.min_size > 0 
-  error_message = "ASG can't be empty"
- }
+  validation {
+    condition     = var.min_size > 0
+    error_message = "ASG can't be empty"
+  }
 
- validation {
-  condition = var.min_size <=5
-  error_message = "ASGs must have 5 or fewer instances to keep costs down."
- }
+  validation {
+    condition     = var.min_size <= 10
+    error_message = "ASGs must have 10 or fewer instances to keep costs down."
+  }
 }
-
 
 variable "desired_capacity" {
   type = number
 
- validation {
-  condition = var.desired_capacity > 0 
-  error_message = "ASG can't be empty"
- }
+  validation {
+    condition     = var.desired_capacity > 0
+    error_message = "ASG can't be empty"
+  }
 
- validation {
-  condition = var.desired_capacity <=5
-  error_message = "ASGs must have 5 or fewer instances to keep costs down."
- }
+  validation {
+    condition     = var.desired_capacity <= 10
+    error_message = "ASGs must have 5 or fewer instances to keep costs down."
+  }
 }
-
 
 variable "health_check_grace_period" {
   type = number
@@ -61,7 +58,8 @@ variable "vpc_zone_identifier" {
 }
 
 variable "target_group_arns" {
-  type = string
+  type    = string
+  default = null
 }
 
 variable "template_version" {
@@ -70,7 +68,8 @@ variable "template_version" {
 }
 
 variable "user_data" {
-  type = string
+  type    = string
+  default = null
 }
 
 variable "instance_type" {
@@ -87,10 +86,6 @@ variable "image_id" {
   type = string
 }
 
-variable "instance_refresh" {
-  type = any
-}
-
 variable "launch_template_name" {
   type = string
 }
@@ -105,23 +100,27 @@ variable "vpc_id" {
   default     = null
 }
 
+variable "tags" {
+  description = "Tags for the bucket"
+  type        = map(string)
+  default     = {}
+}
 
-# variable "instance_refresh" {
-#   description = "Instance refresh information"
-#   type = object({
-#     strategy  = string
-#     preferences = object({
-#       checkpoint_delay       = number
-#       instance_warmup        = number
-#       min_healthy_percentage = number
-#     })
-#   })
-#   default = {
-#     strategy = "Rolling"
-#     preferences = {
-#       checkpoint_delay       = 10
-#       instance_warmup        = 100
-#       min_healthy_percentage = 50
-#     }
-#   }
-# }
+variable "instance_refresh" {
+  type = object({
+    strategy = string
+    preferences = object({
+      checkpoint_delay       = number
+      instance_warmup        = number
+      min_healthy_percentage = number
+    })
+  })
+  default = {
+    strategy = "Rolling"
+    preferences = {
+      checkpoint_delay       = 10
+      instance_warmup        = 100
+      min_healthy_percentage = 50
+    }
+  }
+}

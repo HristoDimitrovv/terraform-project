@@ -1,11 +1,11 @@
-### Create the database layer ###
+### Create the database network layer ###
 resource "aws_db_subnet_group" "rds_subnet" {
   name       = var.db_subnet_name
   subnet_ids = local.subnet_ids
 }
 
 
-### Create RDS with multi-AZ enabled ###
+### Create the RDS ###
 resource "aws_db_instance" "rds" {
   allocated_storage      = var.allocated_storage
   db_name                = var.db_name

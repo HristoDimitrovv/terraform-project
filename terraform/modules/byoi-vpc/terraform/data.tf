@@ -10,6 +10,7 @@ data "aws_iam_policy_document" "flow_logs_role" {
   }
 }
 
+
 data "aws_iam_policy_document" "flow_logs_policy" {
   statement {
     effect = "Allow"

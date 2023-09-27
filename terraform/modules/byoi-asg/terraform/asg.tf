@@ -9,11 +9,21 @@ resource "aws_autoscaling_group" "asg" {
   vpc_zone_identifier       = local.vpc_zone_identifier
   target_group_arns         = [var.target_group_arns]
 
+  instance_refresh {
+    strategy = var.instance_refresh.strategy
+    preferences {
+      checkpoint_delay       = var.instance_refresh.preferences.checkpoint_delay
+      instance_warmup        = var.instance_refresh.preferences.instance_warmup
+      min_healthy_percentage = var.instance_refresh.preferences.min_healthy_percentage
+    }
+  }
+
   launch_template {
     id      = aws_launch_template.web.id
     version = var.template_version
   }
 }
+
 
 ### Create the Launch template ###
 resource "aws_launch_template" "web" {

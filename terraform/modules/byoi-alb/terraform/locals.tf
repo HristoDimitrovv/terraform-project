@@ -7,14 +7,14 @@ locals {
     : var.vpc_id
   )
 
-subnets = (
-  var.subnets == null
-  ? slice(data.aws_subnets.default[0].ids, 0, 2)
-  : var.subnets
-)
+  subnets = (
+    var.subnets == null
+    ? slice(data.aws_subnets.default[0].ids, 0, 2)
+    : var.subnets
+  )
 
 
-security_groups = (
+  security_groups = (
     var.security_groups == null
     ? [data.aws_security_group.default[0].id]
     : var.security_groups
