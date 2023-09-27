@@ -42,12 +42,6 @@ variable "db_username" {
   default     = "user"
 }
 
-variable "create_random_password" {
-  description = "Set to false if you want do not want to create a random password and send it to SSM"
-  type        = bool
-  default     = true
-}
-
 variable "db_instance_class" {
   description = "db instance class"
   type        = string

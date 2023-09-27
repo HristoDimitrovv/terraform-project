@@ -76,6 +76,7 @@ variable "allocated_storage" {
 variable "create_random_password" {
   description = "Set to false if you want do not want to create a random password and send it to SSM"
   type        = bool
+  default     = true
 }
 
 variable "password" {

@@ -9,7 +9,6 @@ module "byoi_rds" {
   engine_version         = var.db_engine_version
   instance_class         = var.db_instance_class
   username               = var.db_username
-  create_random_password = var.create_random_password
   port                   = var.db_port
   skip_final_snapshot    = var.skip_final_snapshot
   multi_az               = var.multi_az
