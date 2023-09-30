@@ -60,7 +60,7 @@ terraform init
 terraform plan
 terraform apply 
 ```
-3. Uncomment the backend config found in "/providers.tf" and run again "terraform init" in order to sent the tfstate file to the S3 bucket (it will be used for data input in the application part). You can choose a name of the S3 bucket in the variables.tf file but you will need to specify it in the backend config here and in the application part.
+3. Uncomment the backend config found in "providers.tf" and run again "terraform init" in order to sent the tfstate file to the S3 bucket (it will be used for data input in the application part). You can choose a name of the S3 bucket in the "variables.tf" file but you will need to specify it in the backend config here and in the application part.
 
 4. Deploy the Application, DB and Monitoring part.
 ```hcl
@@ -69,6 +69,6 @@ terraform init
 terraform plan
 terraform apply 
 ```
-5. Here again uncomment the backend config found in "/providers.tf" and run again "terraform init" in order to sent the tfstate file to the S3 bucket. Note that if you have changed the name of the S3 bucket found in the Networking and Services part, you will need to specify this name in the "providers.tf" file in the "backend s3" and also in the "data.tf" file in the "backend s3" part.
+5. Here again uncomment the backend config found in "providers.tf" and run again "terraform init" in order to sent the tfstate file to the S3 bucket. Note that if you have changed the name of the S3 bucket found in the Networking and Services part, you will need to specify this name in the "providers.tf" file in the "backend s3" and also in the "data.tf" file in the "backend s3" part.
 
 
