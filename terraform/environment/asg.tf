@@ -1,6 +1,6 @@
 ### Create the ASG ###
 module "byoi_asg" {
-  source = "../../modules/byoi-asg/terraform"
+  source = "../modules/byoi-asg/terraform"
 
   name                      = var.name
   max_size                  = var.max_size
@@ -8,7 +8,7 @@ module "byoi_asg" {
   desired_capacity          = var.desired_capacity
   health_check_grace_period = var.health_check_grace_period
   health_check_type         = var.health_check_type
-  vpc_zone_identifier       = data.terraform_remote_state.vpc.outputs.private_subnets
+  vpc_zone_identifier       = module.byoi_vpc.private_subnets
   target_group_arns         = module.byoi_alb.alb_target_group_arn
 
   tags = {

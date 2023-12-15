@@ -1,15 +1,3 @@
-### Retrieve the outputs from the Networking ###
-
-data "terraform_remote_state" "vpc" {
-  backend = "s3"
-  config = {
-    bucket = "hrdimibucket222222"
-    key    = "./vpc-terraform.tfstate"
-    region = "us-east-1"
-  }
-}
-
-
 ### Take the latest AMI for Amazon Linux 2 ###
 
 data "aws_ami" "latest_amazon_linux_2" {

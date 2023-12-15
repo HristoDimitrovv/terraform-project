@@ -1,5 +1,5 @@
 module "byoi_vpc" {
-  source = "../../modules/byoi-vpc/terraform/"
+  source = "../modules/byoi-vpc/terraform/"
 
   vpc_name           = var.vpc_name
   cidr               = var.cidr

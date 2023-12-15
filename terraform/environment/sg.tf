@@ -2,7 +2,7 @@
 resource "aws_security_group" "asg" {
   name        = "ASG"
   description = "ASG Security Group"
-  vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
+  vpc_id      = module.byoi_vpc.vpc_id
 }
 
 resource "aws_security_group_rule" "allow_asg_http_inbound" {
@@ -40,7 +40,7 @@ resource "aws_security_group_rule" "allow_asg_mysql_outbound" {
 resource "aws_security_group" "alb" {
   name        = "ALB"
   description = "ALB Security group"
-  vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
+  vpc_id      = module.byoi_vpc.vpc_id
 }
 
 resource "aws_security_group_rule" "allow_http_inbound" {
@@ -68,7 +68,7 @@ resource "aws_security_group_rule" "allow_http_outbound" {
 resource "aws_security_group" "rds" {
   name        = "RDS"
   description = "RDS Security group"
-  vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
+  vpc_id      = module.byoi_vpc.vpc_id
 }
 
 resource "aws_security_group_rule" "allow_mysql_inbound" {

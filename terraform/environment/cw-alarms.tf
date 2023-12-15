@@ -12,7 +12,7 @@ resource "aws_cloudwatch_metric_alarm" "CPU" {
   dimensions = {
     AutoScalingGroupName = module.byoi_asg.asg_name
   }
-  alarm_actions = [data.terraform_remote_state.vpc.outputs.sns_topic_arn]
+  alarm_actions = [aws_sns_topic.alarm.id]
 }
 
 
@@ -35,7 +35,7 @@ resource "aws_cloudwatch_metric_alarm" "Disk" {
     device     = "xvda1"
     fstype     = "xfs"
   }
-  alarm_actions = [data.terraform_remote_state.vpc.outputs.sns_topic_arn]
+  alarm_actions = [aws_sns_topic.alarm.id]
 }
 
 
@@ -55,7 +55,7 @@ resource "aws_cloudwatch_metric_alarm" "Memory" {
   dimensions = {
     InstanceId = each.value
   }
-  alarm_actions = [data.terraform_remote_state.vpc.outputs.sns_topic_arn]
+  alarm_actions = [aws_sns_topic.alarm.id]
 }
 
 

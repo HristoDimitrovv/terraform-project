@@ -1,8 +1,8 @@
 module "byoi_rds" {
-  source = "../../modules/byoi-rds/terraform/"
+  source = "../modules/byoi-rds/terraform/"
 
   db_subnet_name         = var.db_subnet_name
-  subnet_ids             = data.terraform_remote_state.vpc.outputs.database_subnets
+  subnet_ids             = module.byoi_vpc.database_subnets
   allocated_storage      = var.allocated_storage
   db_name                = var.db_name
   engine                 = var.db_engine
