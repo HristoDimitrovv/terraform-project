@@ -35,6 +35,12 @@ resource "aws_launch_template" "web" {
   iam_instance_profile {
     name = aws_iam_instance_profile.ec2_profile.name
   }
+  tag_specifications {
+    resource_type = "instance"
+    tags = {
+      "Patch Group" = "install-patchgroup-am"
+    }
+  }
 }
 
 

@@ -33,8 +33,8 @@ resource "aws_ssm_maintenance_window_task" "scan_amazon" {
 
   task_invocation_parameters {
     run_command_parameters {
-      output_s3_bucket     = "${var.prefix}-ssm-patch-s3-bucket"
-      output_s3_key_prefix = "scan/amazon"
+      output_s3_bucket     = "hrdimibucket222222"
+      output_s3_key_prefix = "./"
       service_role_arn     = data.aws_iam_role.ssm_maintenance_service_role.arn
       timeout_seconds      = 600
 
@@ -81,8 +81,8 @@ resource "aws_ssm_maintenance_window_task" "install_amazon" {
 
   task_invocation_parameters {
     run_command_parameters {
-      output_s3_bucket     = "${var.prefix}-ssm-patch-s3-bucket"
-      output_s3_key_prefix = "install/amazon"
+      output_s3_bucket     = "hrdimibucket222222"
+      output_s3_key_prefix = "./"
       service_role_arn     = data.aws_iam_role.ssm_maintenance_service_role.arn
       timeout_seconds      = 600
 

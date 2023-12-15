@@ -27,5 +27,5 @@ resource "aws_ssm_patch_baseline" "amazon" {
 
 resource "aws_ssm_patch_group" "amazon" {
   baseline_id = aws_ssm_patch_baseline.amazon.id
-  patch_group = "${var.prefix}-install-patchgroup-am"
+  patch_group = "install-patchgroup-am"
 }
