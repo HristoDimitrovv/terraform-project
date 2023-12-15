@@ -249,3 +249,9 @@ variable "sns_topic_protocol" {
 }
 
 #########################################################
+
+variable "prefix" {
+  description = "This name will prefix all resources, and be added as the value for the 'Name' tag where supported"
+  type        = string
+  default     = "hristo-dev-ssm"
+}
