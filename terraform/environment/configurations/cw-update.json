@@ -1,0 +1,15 @@
+{
+    "schemaVersion": "2.2",
+    "description": "A document for updating CloudWatchAgent to the latest version.",
+    "mainSteps": [
+      {
+        "action": "aws:runDocument",
+        "name": "installCWAgent",
+        "inputs": {
+          "documentType": "SSMDocument",
+          "documentPath": "AWS-ConfigureAWSPackage",
+          "documentParameters": "{\"action\":\"Install\",\"name\" : \"AmazonCloudWatchAgent\"}"
+        }
+      }
+    ]
+  }

@@ -23,7 +23,7 @@ module "byoi_asg" {
   instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.asg.id]
 
-  user_data = base64encode(templatefile("${path.module}/userdata.sh",
+  user_data = base64encode(templatefile("${path.module}/configurations/userdata.sh",
     {
       "DB_USERNAME" = "${var.db_username}",
       "DB_HOSTNAME" = "${module.byoi_rds.rds_hostname}",

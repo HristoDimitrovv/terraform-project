@@ -64,5 +64,5 @@ resource "aws_ssm_parameter" "cw_agent" {
   description = "CW-agent config file"
   name        = "cw-metrics.json"
   type        = "String"
-  value       = file("${path.module}/cw-metrics.json")
+  value       = file("${path.module}/configurations/cw-metrics.json")
 }

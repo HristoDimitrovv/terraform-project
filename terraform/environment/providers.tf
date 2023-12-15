@@ -8,11 +8,11 @@ terraform {
     }
   }
 
-  ### Backend config got tfstate file to be send to S3 ###
+  ## Backend config got tfstate file to be send to S3 ###
 
-  # backend "s3" {
-  #   bucket = "hrdimibucket2222222"
-  #   key    = "./services-terraform.tfstate"
-  #   region = "us-east-1"
-  # }
+  backend "s3" {
+    bucket = "hrdimibucket222222"
+    key    = "./services-terraform.tfstate"
+    region = "us-east-1"
+  }
 }
