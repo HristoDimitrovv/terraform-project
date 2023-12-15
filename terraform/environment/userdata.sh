@@ -4,7 +4,7 @@
 yum update -y upgrade -y
 yum install -y httpd php php-mysqlnd mysql git amazon-cloudwatch-agent amazon-ssm-agent&&
 
-#Enable the httpd and SSM and CW agent services
+#### Enable the httpd and SSM and CW agent services ###
 systemctl enable --now httpd amazon-ssm-agent amazon-cloudwatch-agent
 
 ### Pull the web app and configure it ###
@@ -14,9 +14,12 @@ sed -i "s|Password1|$(aws ssm get-parameter --region us-east-1 --name "/myapp/db
 sed -i "s/\$database = .*/\$database = \"${DATABASE}\";/" web-app/web/config.php
 sed -i "s/\$user = .*/\$user = \"${DB_USERNAME}\";/" web-app/web/config.php
 sed -i "s/\$host = .*/\$host = \"${DB_HOSTNAME}\";/" web-app/web/config.php
-
-/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c ssm:cw-metrics.json -s
 cp -v web-app/web/* /var/www/html/
+
+### Configure the CW agent ###
+/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c ssm:cw-metrics.json -s
+
+### Restart the httpd and CW services to apply the new configurations ###
 systemctl restart httpd amazon-cloudwatch-agent
 
 ### Apply the .sql content to the RDS ###
