@@ -3,31 +3,31 @@ variable "region" {
   default = "us-east-1"
 }
 
-variable "approved_patches_ub" {
+variable "approved_patches_am" {
   description = "The list of approved patches for the SSM baseline"
   type        = list(string)
   default     = []
 }
 
-variable "rejected_patches_ub" {
-  description = "The list of rejected patches for the SSM baseline"
-  type        = list(string)
-  default     = []
-}
-
-variable "product_versions_ub" {
+variable "product_versions_am" {
   description = "The list of product versions for the SSM baseline"
   type        = list(string)
 }
 
-variable "patch_classification_ub" {
+variable "patch_classification_am" {
   description = "The list of patch classifications for the SSM baseline"
   type        = list(string)
 }
 
-variable "patch_severity_ub" {
+variable "patch_severity_am" {
   description = "The list of patch severities for the SSM baseline"
   type        = list(string)
+}
+
+variable "rejected_patches_am" {
+  description = "The list of rejected patches for the SSM baseline"
+  type        = list(string)
+  default     = []
 }
 
 variable "scan_maintenance_window_schedule" {

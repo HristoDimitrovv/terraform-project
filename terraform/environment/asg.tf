@@ -14,6 +14,7 @@ module "byoi_asg" {
   tags = {
     Deployment  = var.terraform
     Environment = var.environment
+    "Patch Group" = "${var.prefix}-install-patchgroup-am"
   }
 
 

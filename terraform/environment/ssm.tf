@@ -1,12 +1,11 @@
 ### SSM OS Patching ### 
-
 module "ssm-patch" {
   source = "../modules/byoi-patch/terraform"
   prefix = var.prefix
 
-  product_versions_ub     = ["Ubuntu20.04", "Ubuntu18.04", "Ubuntu16.04"]
-  patch_classification_ub = ["Bugfix", "Security"]
-  patch_severity_ub       = ["Required", "Important", "Standard", "Optional", "Extra"]
+  product_versions_am     = ["AmazonLinux2", "AmazonLinux2.0"]
+  patch_classification_am = ["Bugfix", "Security", "Enhancement", "Recommended"]
+  patch_severity_am       = ["Critical", "Important", "Medium", "Low"]
 
   scan_maintenance_window_schedule = "cron(0 0 21 ? * * *)"
   scan_maintenance_window_duration = "2"
@@ -22,7 +21,7 @@ module "ssm-patch" {
   install_max_concurrency = "25%"
   install_max_errors      = "20"
 
-  access_log_target_bucket = "hrdimibucket222222"
+  access_log_target_bucket = "hrdimibucket22222"
   access_log_target_prefix = "./"
 }
 
