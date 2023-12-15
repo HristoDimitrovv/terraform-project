@@ -1,5 +1,5 @@
 module "code_pipeline" {
-  source                = "./codepipeline_codecommit"
+  source                = "../../modules/byoi-cicd"
   prefix                = "core"
   env                   = "shared"
   solution_name         = "pipeline"
