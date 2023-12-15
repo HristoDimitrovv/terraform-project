@@ -210,7 +210,7 @@ variable "vpc_flow_log_group" {
 variable "bucket" {
   description = "Name of the S3 bucket"
   type        = string
-  default     = "hrdimibucket22222"
+  default     = "hrdimibucket222222"
 }
 
 variable "status" {

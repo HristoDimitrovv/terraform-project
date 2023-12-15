@@ -11,13 +11,6 @@ module "byoi_asg" {
   vpc_zone_identifier       = module.byoi_vpc.private_subnets
   target_group_arns         = module.byoi_alb.alb_target_group_arn
 
-  tags = {
-    Deployment  = var.terraform
-    Environment = var.environment
-    "Patch Group" = "${var.prefix}-install-patchgroup-am"
-  }
-
-
   ### Launch Template ###
   launch_template_name   = var.launch_template_name
   image_id               = data.aws_ami.latest_amazon_linux_2.id

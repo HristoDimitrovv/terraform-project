@@ -2,7 +2,7 @@
 
 ### Install the neccessary tools ###
 yum update -y upgrade -y
-yum install -y httpd php php-mysqlnd mysql git amazon-cloudwatch-agent amazon-ssm-agent&&
+yum install -y httpd php php-mysqlnd mysql git amazon-cloudwatch-agent amazon-ssm-agent
 
 #### Enable the httpd and SSM and CW agent services ###
 systemctl enable --now httpd amazon-ssm-agent amazon-cloudwatch-agent

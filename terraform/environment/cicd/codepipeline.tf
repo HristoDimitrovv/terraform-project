@@ -1,5 +1,5 @@
 module "code_pipeline" {
-  source                = "../../modules/byoi-cicd"
+  source                = "../../modules/byoi-cicd/terraform"
   prefix                = "core"
   env                   = "shared"
   solution_name         = "pipeline"
