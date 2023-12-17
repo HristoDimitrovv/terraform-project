@@ -3,7 +3,7 @@
 variable "bucket_name" {
   description = "Bucket name"
   type        = string
-  default     = "hrdimibucket-for-codepipeline"
+  default     = "hrdimibucket-for-codepipeline1"
 }
 
 variable "solution_name" {

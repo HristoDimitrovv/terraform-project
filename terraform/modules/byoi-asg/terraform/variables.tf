@@ -100,10 +100,9 @@ variable "vpc_id" {
   default     = null
 }
 
-variable "tags" {
-  description = "Tags for the bucket"
-  type        = map(string)
-  default     = {}
+variable "instance_tags" {
+  type    = map(string)
+  default = {}
 }
 
 variable "instance_refresh" {

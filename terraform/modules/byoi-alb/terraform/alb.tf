@@ -5,6 +5,8 @@ resource "aws_lb" "byoi_alb" {
   load_balancer_type = var.load_balancer_type
   security_groups    = local.security_groups
   subnets            = local.subnets
+
+  tags = var.tags
 }
 
 

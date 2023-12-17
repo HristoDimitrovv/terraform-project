@@ -1,8 +1,13 @@
 #!/bin/bash
 
+### Send the output of the script in a log file ### 
+LOG_FILE=/tmp/bootstrap.log
+exec &> $LOG_FILE
+
 ### Install the neccessary tools ###
-yum update -y upgrade -y
-yum install -y httpd php php-mysqlnd mysql git amazon-cloudwatch-agent amazon-ssm-agent
+yum -y update
+sleep 5
+yum install -y httpd php mysql php-mysqlnd git
 
 #### Enable the httpd and SSM and CW agent services ###
 systemctl enable --now httpd amazon-ssm-agent amazon-cloudwatch-agent

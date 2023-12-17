@@ -10,7 +10,7 @@ module "byoi_vpc" {
   vpc_flow_log_group = var.vpc_flow_log_group
 
   tags = {
-    Deployment  = var.terraform
+    Deployment  = var.deployment
     Environment = var.environment
   }
 }

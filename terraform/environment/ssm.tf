@@ -39,12 +39,10 @@ resource "aws_ssm_document" "cw_update" {
 resource "aws_ssm_association" "update_cw" {
   depends_on = [aws_ssm_document.cw_update]
   name       = "auto_update_cw_agent"
-
   targets {
     key    = "InstanceIds"
     values = ["*"]
   }
-
   association_name    = "auto_update_cloudwatch_agent"
   schedule_expression = "rate(30 days)"
 }
@@ -53,12 +51,19 @@ resource "aws_ssm_association" "update_cw" {
 ### Create the association that executes the SSM update document ###
 resource "aws_ssm_association" "update_ssm" {
   name = "AWS-UpdateSSMAgent"
-
   targets {
     key    = "InstanceIds"
     values = ["*"]
   }
-
   association_name    = "auto_update_ssm_agent"
   schedule_expression = "rate(30 days)"
+}
+
+
+### Create cw-agent config resource in SSM Parameter store ###
+resource "aws_ssm_parameter" "cw_agent" {
+  description = "CW-agent config file"
+  name        = "cw-metrics.json"
+  type        = "String"
+  value       = file("${path.module}/configurations/cw-metrics.json")
 }

@@ -57,12 +57,3 @@ resource "aws_cloudwatch_metric_alarm" "Memory" {
   }
   alarm_actions = [aws_sns_topic.alarm.id]
 }
-
-
-### Create cw-agent config resource in SSM ###
-resource "aws_ssm_parameter" "cw_agent" {
-  description = "CW-agent config file"
-  name        = "cw-metrics.json"
-  type        = "String"
-  value       = file("${path.module}/configurations/cw-metrics.json")
-}

@@ -1,5 +1,4 @@
 ### Data related to the default VPC, SG and Subnet if there is no specified in the root module ###
-
 data "aws_vpc" "default" {
   default = true
 }

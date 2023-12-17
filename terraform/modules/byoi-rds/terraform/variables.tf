@@ -1,11 +1,11 @@
 ### RDS varialbes ###
 
-variable "db_name" {
+variable "db_subnet_name" {
   description = "db name"
   type        = string
 }
 
-variable "db_subnet_name" {
+variable "identifier" {
   description = "db name"
   type        = string
 }

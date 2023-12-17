@@ -19,20 +19,10 @@ resource "aws_security_group_rule" "allow_https_outbound" {
   type              = "egress"
   security_group_id = aws_security_group.asg.id
 
-  from_port   = 443
-  to_port     = 443
-  protocol    = "tcp"
+  from_port   = 0
+  to_port     = 0
+  protocol    = -1
   cidr_blocks = ["0.0.0.0/0"]
-}
-
-resource "aws_security_group_rule" "allow_asg_mysql_outbound" {
-  type              = "egress"
-  security_group_id = aws_security_group.asg.id
-
-  from_port                = 3306
-  to_port                  = 3306
-  protocol                 = "tcp"
-  source_security_group_id = aws_security_group.rds.id
 }
 
 
@@ -57,9 +47,9 @@ resource "aws_security_group_rule" "allow_http_outbound" {
   type              = "egress"
   security_group_id = aws_security_group.alb.id
 
-  from_port   = 80
-  to_port     = 80
-  protocol    = "tcp"
+  from_port   = 0
+  to_port     = 0
+  protocol    = -1
   cidr_blocks = ["0.0.0.0/0"]
 }
 

@@ -19,7 +19,7 @@ module "byoi_alb" {
   listener_protocol = var.listener_protocol
 
   tags = {
-    Deployment  = var.terraform
+    Deployment  = var.deployment
     Environment = var.environment
   }
 }

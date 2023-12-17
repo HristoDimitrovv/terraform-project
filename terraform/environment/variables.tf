@@ -1,9 +1,9 @@
 ### RDS VARIABLES ### 
 
-variable "db_name" {
+variable "db_identifier" {
   description = "db name"
   type        = string
-  default     = "rds"
+  default     = "byoi-rds"
 }
 
 variable "db_subnet_name" {
@@ -110,9 +110,9 @@ variable "environment" {
   default = "dev"
 }
 
-variable "terraform" {
+variable "deployment" {
   type    = string
-  default = "true"
+  default = "Terraform"
 }
 
 
@@ -233,7 +233,7 @@ variable "sse_algorithm" {
 variable "email" {
   description = "Email address for the SNS topic"
   type        = string
-  default     = ""
+  default     = "hristo.dimitrov@softwareone.com"
 }
 
 variable "sns_topic_name" {

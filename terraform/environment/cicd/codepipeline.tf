@@ -1,9 +1,9 @@
 module "code_pipeline" {
   source                = "../../modules/byoi-cicd/terraform"
   prefix                = "core"
-  env                   = "shared"
+  env                   = "dev"
   solution_name         = "pipeline"
-  artifacts_bucket      = aws_s3_bucket.s3.bucket
+  artifacts_bucket      = module.byoi_s3.bucket_id
   kms_key_id            = aws_kms_key.pipeline.id
   codepipeline_role_arn = aws_iam_role.codepipeline.arn
   codebuild_role_arn    = aws_iam_role.codebuild.arn

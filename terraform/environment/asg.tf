@@ -24,4 +24,10 @@ module "byoi_asg" {
       "DATABASE"    = "bulgaria",
     }
   ))
+
+  instance_tags = {
+    "Patch Group" = "install-patchgroup-am"
+    Environment   = var.environment
+    Deployment    = var.deployment
+  }
 }
