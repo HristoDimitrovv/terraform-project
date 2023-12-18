@@ -6,11 +6,10 @@ exec &> $LOG_FILE
 
 ### Install the neccessary tools ###
 yum -y update
-sleep 5
 yum install -y httpd php mysql php-mysqlnd git
 
 #### Enable the httpd and SSM and CW agent services ###
-systemctl enable --now httpd amazon-ssm-agent amazon-cloudwatch-agent
+systemctl enable --now httpd amazon-cloudwatch-agent
 
 ### Pull the web app and configure it ###
 git clone https://github.com/HristoDimitrovv/web-app &&
