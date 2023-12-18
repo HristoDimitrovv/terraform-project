@@ -30,18 +30,3 @@ variable "solution_source_path" {
   type        = string
   default     = "./"
 }
-variable "region" {
-  description = "AWS Region in use"
-  type        = string
-  default     = "us-east-1"
-}
-variable "codebuild_role" {
-  description = "Codebuild role for deployment"
-  type        = string
-  default     = "codebuild"
-}
-variable "codepipeline_role" {
-  description = "CodePipeline role for deployment"
-  type        = string
-  default     = "codepipeline"
-}

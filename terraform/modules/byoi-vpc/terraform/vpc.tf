@@ -20,18 +20,3 @@ resource "aws_flow_log" "net_vpc_flow_logs" {
 resource "aws_cloudwatch_log_group" "vpc_log_group" {
   name = var.vpc_flow_log_group
 }
-
-
-#Creating vpc flow logs role ###
-resource "aws_iam_role" "flow_logs_role" {
-  name               = "VPC_flow_logs_role"
-  assume_role_policy = data.aws_iam_policy_document.flow_logs_role.json
-}
-
-
-### VPC flow logs policy ###
-resource "aws_iam_role_policy" "flow_logs_policy" {
-  name   = "VPC_flow_logs_policy"
-  role   = aws_iam_role.flow_logs_role.id
-  policy = data.aws_iam_policy_document.flow_logs_policy.json
-}

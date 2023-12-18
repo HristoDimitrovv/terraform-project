@@ -22,7 +22,7 @@ resource "aws_ssm_maintenance_window_task" "scan_amazon" {
   task_type        = "RUN_COMMAND"
   task_arn         = "AWS-RunPatchBaseline"
   priority         = 1
-  service_role_arn = data.aws_iam_role.ssm_maintenance_service_role.arn
+  service_role_arn = aws_iam_role.ssm_maintenance_window.arn
   max_concurrency  = var.scan_max_concurrency
   max_errors       = var.scan_max_errors
 
@@ -35,7 +35,7 @@ resource "aws_ssm_maintenance_window_task" "scan_amazon" {
     run_command_parameters {
       output_s3_bucket     = "hrdimibucket222222"
       output_s3_key_prefix = "./"
-      service_role_arn     = data.aws_iam_role.ssm_maintenance_service_role.arn
+      service_role_arn     = aws_iam_role.ssm_maintenance_window.arn
       timeout_seconds      = 600
 
       parameter {
@@ -70,7 +70,7 @@ resource "aws_ssm_maintenance_window_task" "install_amazon" {
   task_type        = "RUN_COMMAND"
   task_arn         = "AWS-RunPatchBaseline"
   priority         = 1
-  service_role_arn = data.aws_iam_role.ssm_maintenance_service_role.arn
+  service_role_arn = aws_iam_role.ssm_maintenance_window.arn
   max_concurrency  = var.install_max_concurrency
   max_errors       = var.install_max_errors
 
@@ -83,7 +83,7 @@ resource "aws_ssm_maintenance_window_task" "install_amazon" {
     run_command_parameters {
       output_s3_bucket     = "hrdimibucket222222"
       output_s3_key_prefix = "./"
-      service_role_arn     = data.aws_iam_role.ssm_maintenance_service_role.arn
+      service_role_arn     = aws_iam_role.ssm_maintenance_window.arn
       timeout_seconds      = 600
 
       parameter {

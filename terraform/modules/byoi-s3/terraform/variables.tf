@@ -11,7 +11,7 @@ variable "status" {
 }
 
 variable "sse_algorithm" {
-  description = "Encryption type, can be AES256 or aws:kms"
+  description = "Encryption type, can be AES256 or aws:kms. It is set to AES256 by default"
   type        = string
   default     = "AES256"
 }

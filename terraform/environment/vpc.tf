@@ -1,7 +1,6 @@
 module "byoi_vpc" {
   source = "../modules/byoi-vpc/terraform/"
 
-  vpc_name           = var.vpc_name
   cidr               = var.cidr
   availability_zones = var.availability_zones
   public_subnets     = var.public_subnets

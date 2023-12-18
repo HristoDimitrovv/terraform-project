@@ -3,4 +3,9 @@ module "byoi_s3" {
   bucket            = var.bucket
   enable_versioning = false
   enable_encryption = true
+
+  tags = {
+    Deployment  = var.deployment
+    Environment = var.environment
+  }
 }

@@ -1,8 +1,3 @@
-variable "region" {
-  type    = string
-  default = "us-east-1"
-}
-
 variable "approved_patches_am" {
   description = "The list of approved patches for the SSM baseline"
   type        = list(string)
@@ -78,14 +73,6 @@ variable "install_max_concurrency" {
 variable "install_max_errors" {
   description = "The maximum amount of errors that instances of a task will tolerate before being de-scheduled"
   type        = string
-}
-
-variable "access_log_target_bucket" {
-  description = "s3 access logs bucket"
-}
-
-variable "access_log_target_prefix" {
-  description = "s3 access logs prefix"
 }
 
 variable "prefix" {

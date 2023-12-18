@@ -163,10 +163,6 @@ variable "listener_protocol" {
 #########################################################
 
 ### VPC Variables ###
-variable "vpc_name" {
-  type    = string
-  default = "byoi-vpc"
-}
 
 variable "cidr" {
   description = "CIDR block of the VPC"
@@ -212,19 +208,6 @@ variable "bucket" {
   type        = string
   default     = "hrdimibucket222222"
 }
-
-variable "status" {
-  description = "Status of the versioning, it is set as Disabled by default"
-  type        = string
-  default     = ""
-}
-
-variable "sse_algorithm" {
-  description = "Encryption type, can be AES256 or aws:kms. It is set to AES256 by default"
-  type        = string
-  default     = ""
-}
-
 
 #########################################################
 

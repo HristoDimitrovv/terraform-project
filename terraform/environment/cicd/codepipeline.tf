@@ -1,8 +1,8 @@
 module "code_pipeline" {
   source                = "../../modules/byoi-cicd/terraform"
-  prefix                = "core"
-  env                   = "dev"
-  solution_name         = "pipeline"
+  prefix                = var.prefix
+  env                   = var.env
+  solution_name         = var.solution_name
   artifacts_bucket      = module.byoi_s3.bucket_id
   kms_key_id            = aws_kms_key.pipeline.id
   codepipeline_role_arn = aws_iam_role.codepipeline.arn

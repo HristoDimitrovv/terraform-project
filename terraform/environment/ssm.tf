@@ -21,8 +21,6 @@ module "ssm-patch" {
   install_max_concurrency = "25%"
   install_max_errors      = "20"
 
-  access_log_target_bucket = "hrdimibucket222222"
-  access_log_target_prefix = "./"
 }
 
 

@@ -1,7 +1,3 @@
-variable "vpc_name" {
-  type = string
-}
-
 variable "cidr" {
   type = string
 }
@@ -38,11 +34,6 @@ variable "create_database_subnets" {
 variable "create_nat_gateway" {
   type    = bool
   default = true
-}
-
-variable "igw_name" {
-  type    = string
-  default = ""
 }
 
 variable "public_subnets" {
