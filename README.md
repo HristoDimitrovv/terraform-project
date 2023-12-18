@@ -6,7 +6,7 @@
 ```hcl
 git clone git@github.com:HristoDimitrovv/terraform-project.git
 ```
-2. Deploy the Networking and Services part.
+2. Deploy the web application infrastructure.
 ```hcl
 cd /terraform-project/terraform/environment/
 terraform init
