@@ -122,7 +122,7 @@ variable "deployment" {
 variable "alb_name" {
   description = "name of the ALB"
   type        = string
-  default     = "byoi"
+  default     = "byoi-alb"
 }
 
 ### Target Group with Health check ### 
@@ -168,6 +168,11 @@ variable "cidr" {
   description = "CIDR block of the VPC"
   type        = string
   default     = "10.1.0.0/16"
+}
+
+variable "vpc_name" {
+  type    = string
+  default = "byoi-vpc"
 }
 
 variable "public_subnets" {
@@ -216,7 +221,7 @@ variable "bucket" {
 variable "email" {
   description = "Email address for the SNS topic"
   type        = string
-  default     = ""
+  default     = "hristo.dimitrov@softwareone.com"
 }
 
 variable "sns_topic_name" {

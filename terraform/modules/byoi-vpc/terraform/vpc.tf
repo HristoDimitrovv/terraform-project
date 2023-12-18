@@ -2,8 +2,7 @@
 resource "aws_vpc" "byoi_vpc" {
   cidr_block           = var.cidr
   enable_dns_hostnames = var.enable_dns_hostnames
-
-  tags = var.tags
+  tags                 = var.tags
 }
 
 

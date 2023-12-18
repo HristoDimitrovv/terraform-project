@@ -11,5 +11,6 @@ module "byoi_vpc" {
   tags = {
     Deployment  = var.deployment
     Environment = var.environment
+    Name        = var.vpc_name
   }
 }
