@@ -1,0 +1,11 @@
+---
+extends: default
+
+rules:
+  line-length:
+    max: 150
+    level: warning
+  indentation:
+    spaces: 2
+  empty-lines:
+    max-end: 1
