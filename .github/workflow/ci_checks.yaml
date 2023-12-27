@@ -1,0 +1,30 @@
+name: Push Checks
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v1
+
+    - name: Run yamlint
+      run: |
+        pip install yamllint
+        find . -name "*.yaml" -exec yamllint -c .yamllint {} \;
+
+    - name: Run tflint
+      run: |
+        tflint -f compact --recursive --only=terraform_unused_declarations
+
+    - name: Run Terraform fmt
+      run: |
+        terraform fmt -check
