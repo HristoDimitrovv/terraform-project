@@ -25,7 +25,7 @@ jobs:
          if [[ $error_warning_count -gt 0 ]]; then
           echo "$error_warning_count YAML linting errors or warnings found in tmp_yamllint.log"
           exit 1
-         else 
+         else
           exit 0
          fi
 
