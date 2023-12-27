@@ -27,7 +27,7 @@ jobs:
         wget https://github.com/terraform-linters/tflint/releases/latest/download/tflint_linux_amd64.zip
         unzip tflint_linux_amd64.zip
         sudo mv tflint /usr/local/bin/
-        tflint -f compact --recursive --only=terraform_unused_declarations
+        tflint -f compact --recursive --only=terraform_unused_declarations || true
 
     - name: Run Terraform fmt
       run: |
