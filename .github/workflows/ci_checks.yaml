@@ -26,7 +26,7 @@ jobs:
           echo "$error_warning_count YAML linting errors or warnings found in tmp_yamllint.log"
           exit 1
          else
-          exit 0 
+          exit 0
          fi
         shell: bash
 
