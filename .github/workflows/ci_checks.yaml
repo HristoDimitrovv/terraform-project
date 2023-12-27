@@ -1,3 +1,4 @@
+---
 name: Push Checks
 
 on:
@@ -20,6 +21,10 @@ jobs:
       run: |
         pip install yamllint > /dev/null 2>&1
         find . -name "*.yaml" -exec yamllint -c .yamllint {} \;
+        
+    - name: Run JSON Validator
+      run: |
+        find . -name "*.json" -exec python3 json_validator.py {} +
 
     - name: Run tflint
       run: |
