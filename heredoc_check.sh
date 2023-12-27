@@ -26,17 +26,7 @@
 
 # Check if there are files to ignore and construct the find command appropriately
 
-IGNORED_FILES="$(grep -Ev '^#|^$' < heredoc_check.ignore)"
-if [[ -z "$IGNORED_FILES" ]]; then
-    echo "Ignored files: None" | tee tmp_heredoc.log
-    find . -type f -name "*.tf" -exec grep -H "<<" {} \; | tee -a tmp_heredoc.log
-else
-    echo "Ignored files:" | tee tmp_heredoc.log
-    echo "${IGNORED_FILES}" | tee -a tmp_heredoc.log
-    for FILE in ${IGNORED_FILES}; do
-        find . -type f -name "*.tf" -not -wholename "${FILE}" -exec grep -H "<<" {} \; | tee -a tmp_heredoc.log
-    done
-fi
+find . -type f -name "*.tf" -exec grep -H "<<" {} \; | tee -a tmp_heredoc.log
 
 # Validate HereDoc usage based on find's results
 line_count=$(wc -l < tmp_heredoc.log | awk '{print $1}')

@@ -30,18 +30,12 @@ jobs:
 
     - name: Execute Heredoc Script
       run: |
-        IGNORED_FILES="$(grep -Ev '^#|^$' < heredoc_check.ignore)"
-        if [[ -z "$IGNORED_FILES" ]]; then
-            echo "Ignored files: None" | tee tmp_heredoc.log
-            find . -type f -name "*.tf" -exec grep -H "<<" {} \; | tee -a tmp_heredoc.log
-        else
-            echo "Ignored files:" | tee tmp_heredoc.log
-            echo "${IGNORED_FILES}" | tee -a tmp_heredoc.log
-            for FILE in ${IGNORED_FILES}; do
-                find . -type f -name "*.tf" -not -wholename "${FILE}" -exec grep -H "<<" {} \; | tee -a tmp_heredoc.log
-            done
+        find . -type f -name "*.tf" -exec grep -H "<<" {} \; | tee -a tmp_heredoc.log
+        line_count=$(wc -l < tmp_heredoc.log | awk '{print $1}')
+        if [[ $line_count -gt 0 ]]; then
+        echo "$line_count lines in tmp_heredoc.log"
+        exit 1
         fi
-        cat tmp_heredoc.log
 
     - name: Run Terraform fmt
       run: |
