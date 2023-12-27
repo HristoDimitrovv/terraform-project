@@ -26,7 +26,7 @@ jobs:
           echo "$error_warning_count YAML linting errors or warnings found in tmp_yamllint.log"
           exit 1
          fi
-        shell: bash
+        shell: /usr/bin/bash
 
       - name: Run JSON Validator check
         run: |
