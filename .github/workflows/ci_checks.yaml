@@ -1,4 +1,4 @@
-
+---
 name: Push Checks
 
 "on":
@@ -23,7 +23,6 @@ jobs:
          find . -name "*.yaml" -exec yamllint -c .yamllint {} \; | tee -a tmp_yamllint.log
          line_count=$(wc -l < tmp_yamllint.log | awk '{print $1}')
          if [[ $line_count -gt 0 ]]; then
-          echo "$line_count lines in tmp_yamllint.log"
           exit 1
          fi
 
