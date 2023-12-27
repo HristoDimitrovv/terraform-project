@@ -1,4 +1,3 @@
----
 name: Push Checks
 
 on:
@@ -29,7 +28,21 @@ jobs:
         sudo mv tflint /usr/local/bin/
         tflint -f compact --recursive --only=terraform_unused_declarations || true
 
+    - name: Execute Heredoc Script
+      run: |
+        IGNORED_FILES="$(grep -Ev '^#|^$' < heredoc_check.ignore)"
+        if [[ -z "$IGNORED_FILES" ]]; then
+            echo "Ignored files: None" | tee tmp_heredoc.log
+            find . -type f -name "*.tf" -exec grep -H "<<" {} \; | tee -a tmp_heredoc.log
+        else
+            echo "Ignored files:" | tee tmp_heredoc.log
+            echo "${IGNORED_FILES}" | tee -a tmp_heredoc.log
+            for FILE in ${IGNORED_FILES}; do
+                find . -type f -name "*.tf" -not -wholename "${FILE}" -exec grep -H "<<" {} \; | tee -a tmp_heredoc.log
+            done
+        fi
+        cat tmp_heredoc.log
+
     - name: Run Terraform fmt
       run: |
         terraform fmt -check --recursive
-
