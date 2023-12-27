@@ -1,3 +1,4 @@
+---
 name: Push Checks
 
 on:
@@ -23,6 +24,9 @@ jobs:
 
     - name: Run tflint
       run: |
+        wget https://github.com/terraform-linters/tflint/releases/latest/download/tflint_linux_amd64.zip
+        unzip tflint_linux_amd64.zip
+        sudo mv tflint /usr/local/bin/
         tflint -f compact --recursive --only=terraform_unused_declarations
 
     - name: Run Terraform fmt
