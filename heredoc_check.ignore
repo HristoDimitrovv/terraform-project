@@ -1,1 +1,2 @@
-./terraform/variables.tf
+./terraform/environment/variables.tf
+./terraform/environment/cicd/variables.tf
