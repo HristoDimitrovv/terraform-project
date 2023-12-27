@@ -17,23 +17,23 @@ jobs:
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v1
 
-    - name: Run yamlint
+    - name: Run yamlint check
       run: |
         pip install yamllint > /dev/null 2>&1
         find . -name "*.yaml" -exec yamllint -c .yamllint {} \;
 
-    - name: Run JSON Validator
+    - name: Run JSON Validator check
       run: |
         find . -name "*.json" -exec python3 json_validator.py {} +
 
-    - name: Run tflint
+    - name: Run tflint check
       run: |
         wget https://github.com/terraform-linters/tflint/releases/latest/download/tflint_linux_amd64.zip > /dev/null 2>&1
         unzip tflint_linux_amd64.zip > /dev/null 2>&1
         sudo mv tflint /usr/local/bin/ > /dev/null 2>&1
         tflint -f compact --recursive --only=terraform_unused_declarations || true
 
-    - name: Execute Heredoc Script
+    - name: Run Heredoc check
       run: |
         find . -type f -name "*.tf" -exec grep -H "<<" {} \; | tee -a tmp_heredoc.log
         line_count=$(wc -l < tmp_heredoc.log | awk '{print $1}')
@@ -41,6 +41,13 @@ jobs:
         echo "$line_count lines in tmp_heredoc.log"
         fi
 
-    - name: Run Terraform fmt
+    - name: Run Terraform fmt check
       run: |
         terraform fmt -check --recursive
+
+    - name: Run tfsec check
+      run: |
+        wget https://github.com/tfsec/tfsec/releases/latest/download/tfsec-linux-amd64 > /dev/null 2>&1
+        chmod +x tfsec-linux-amd64 > /dev/null 2>&1
+        sudo mv tfsec-linux-amd64 /usr/local/bin/tfsec > /dev/null 2>&1
+        tfsec --no-color --minimum-severity MEDIUM --force-all-dirs || true
