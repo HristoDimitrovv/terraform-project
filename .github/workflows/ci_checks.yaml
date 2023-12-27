@@ -20,7 +20,12 @@ jobs:
     - name: Run yamlint check
       run: |
         pip install yamllint > /dev/null 2>&1
-        find . -name "*.yaml" -exec yamllint -c .yamllint {} \; || exit 1
+        find . -name "*.yaml" -exec yamllint -c .yamllint {} \; | tee -a tmp_yamllint.log
+        error_warning_count=$(grep -c -E "error|warning" tmp_yamllint.log)
+        if [[ $error_warning_count -gt 0 ]]; then
+         echo "$error_warning_count YAML linting errors or warnings found in tmp_yamllint.log"
+         exit 1
+        fi
 
     - name: Run JSON Validator check
       run: |
@@ -38,8 +43,8 @@ jobs:
         find . -type f -name "*.tf" -exec grep -H "<<" {} \; | tee -a tmp_heredoc.log
         line_count=$(wc -l < tmp_heredoc.log | awk '{print $1}')
         if [[ $line_count -gt 0 ]]; then
-        echo "$line_count lines in tmp_heredoc.log"
-        exit 1
+         echo "$line_count lines in tmp_heredoc.log"
+         exit 1
         fi
 
     - name: Run Terraform fmt check
