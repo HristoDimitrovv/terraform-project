@@ -1,7 +1,7 @@
 ---
 name: Push Checks
 
-true:
+"on":
   push:
     branches:
       - master
