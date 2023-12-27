@@ -28,6 +28,9 @@ jobs:
 
     - name: Run tfsec
       run: |
+        wget https://github.com/tfsec/tfsec/releases/latest/download/tfsec-linux-amd64 > /dev/null 2>&1
+        chmod +x tfsec-linux-amd64 > /dev/null 2>&1
+        sudo mv tfsec-linux-amd64 /usr/local/bin/tfsec > /dev/null 2>&1
         tfsec --no-color --minimum-severity MEDIUM --force-all-dirs
 
     - name: Run tflint
