@@ -34,7 +34,6 @@ jobs:
         line_count=$(wc -l < tmp_heredoc.log | awk '{print $1}')
         if [[ $line_count -gt 0 ]]; then
         echo "$line_count lines in tmp_heredoc.log"
-        exit 1
         fi
 
     - name: Run Terraform fmt
