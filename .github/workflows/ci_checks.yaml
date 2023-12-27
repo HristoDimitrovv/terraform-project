@@ -19,6 +19,7 @@ jobs:
 
       - name: Run yamlint check
         run: |
+         pip install yamllint
          (find . -name "*.yaml" -exec yamllint -c .yamllint {} \; || true) | tee -a tmp_yamllint.log
          error_warning_count=$(grep -c -E "error|warning" tmp_yamllint.log)
          if [[ $error_warning_count -gt 0 ]]; then
