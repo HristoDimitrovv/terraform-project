@@ -18,14 +18,14 @@ jobs:
 
     - name: Run yamlint
       run: |
-        pip install yamllint
+        pip install yamllint > /dev/null 2>&1
         find . -name "*.yaml" -exec yamllint -c .yamllint {} \;
 
     - name: Run tflint
       run: |
-        wget https://github.com/terraform-linters/tflint/releases/latest/download/tflint_linux_amd64.zip
-        unzip tflint_linux_amd64.zip
-        sudo mv tflint /usr/local/bin/
+        wget https://github.com/terraform-linters/tflint/releases/latest/download/tflint_linux_amd64.zip > /dev/null 2>&1
+        unzip tflint_linux_amd64.zip > /dev/null 2>&1
+        sudo mv tflint /usr/local/bin/ > /dev/null 2>&1
         tflint -f compact --recursive --only=terraform_unused_declarations || true
 
     - name: Execute Heredoc Script
