@@ -31,7 +31,7 @@ jobs:
         wget https://github.com/terraform-linters/tflint/releases/latest/download/tflint_linux_amd64.zip > /dev/null 2>&1
         unzip tflint_linux_amd64.zip > /dev/null 2>&1
         sudo mv tflint /usr/local/bin/ > /dev/null 2>&1
-        tflint -f compact --recursive --only=terraform_unused_declarations || true
+        tflint -f compact --recursive --only=terraform_unused_declarations
 
     - name: Run Heredoc check
       run: |
@@ -39,11 +39,12 @@ jobs:
         line_count=$(wc -l < tmp_heredoc.log | awk '{print $1}')
         if [[ $line_count -gt 0 ]]; then
         echo "$line_count lines in tmp_heredoc.log"
+        exit 1
         fi
 
     - name: Run Terraform fmt check
       run: |
-        terraform fmt -check --recursive || true
+        terraform fmt -check --recursive
 
     - name: Run tfsec check
       run: |
