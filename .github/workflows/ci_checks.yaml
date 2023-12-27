@@ -20,7 +20,7 @@ jobs:
     - name: Run yamlint check
       run: |
         pip install yamllint > /dev/null 2>&1
-        find . -name "*.yaml" -exec yamllint -c .yamllint {} \;
+        find . -name "*.yaml" -exec yamllint -c .yamllint {} \; || exit 1
 
     - name: Run JSON Validator check
       run: |
