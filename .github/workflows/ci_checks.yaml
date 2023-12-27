@@ -1,7 +1,7 @@
 ---
 name: Push Checks
 
-on:
+true:
   push:
     branches:
       - master
@@ -10,7 +10,7 @@ jobs:
   checks:
     runs-on: ubuntu-latest
 
-    steps:
+  steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
