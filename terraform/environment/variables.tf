@@ -221,7 +221,7 @@ variable "bucket" {
 variable "email" {
   description = "Email address for the SNS topic"
   type        = string
-  default     = ""
+  default     = "hristo.dimitrov@softwareone.com"
 }
 
 variable "sns_topic_name" {
