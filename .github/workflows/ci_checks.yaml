@@ -32,6 +32,4 @@ jobs:
     - name: Run Terraform fmt
       run: |
         terraform fmt -check --recursive
-    - name: Create Terraform Fmt Environment File
-      run: echo "TERRAFORM_FMT_WARNINGS=true" >> $GITHUB_ENV
-      if: ${{ failure() }}
+
