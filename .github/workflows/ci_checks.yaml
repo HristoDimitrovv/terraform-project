@@ -17,7 +17,7 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v2
 
-      - name: Run yamlint check
+      - name: Check yamlint
         run: |
          pip install yamllint > /dev/null 2>&1
          find . -name "*.yaml" -exec yamllint -c .yamllint {} \; | tee -a tmp_yamllint.log
@@ -26,18 +26,18 @@ jobs:
           exit 1
          fi
 
-      - name: Run JSON Validator check
+      - name: Check JSON Validator
         run: |
          find . -name "*.json" -exec python3 json_validator.py {} +
 
-      - name: Run tflint check
+      - name: Check tflint
         run: |
          wget https://github.com/terraform-linters/tflint/releases/latest/download/tflint_linux_amd64.zip > /dev/null 2>&1
          unzip tflint_linux_amd64.zip > /dev/null 2>&1
          sudo mv tflint /usr/local/bin/ > /dev/null 2>&1
          tflint -f compact --recursive --only=terraform_unused_declarations
 
-      - name: Run Heredoc check
+      - name: Check Heredoc
         run: |
          find . -type f -name "*.tf" -exec grep -H "<<" {} \; | tee -a tmp_heredoc.log
          line_count=$(wc -l < tmp_heredoc.log | awk '{print $1}')
@@ -46,11 +46,11 @@ jobs:
           exit 1
          fi
 
-      - name: Run Terraform fmt check
+      - name: Check Terraform fmt
         run: |
          terraform fmt -check --recursive
 
-      - name: Run tfsec check
+      - name: Check tfsec
         run: |
          wget https://github.com/tfsec/tfsec/releases/latest/download/tfsec-linux-amd64 > /dev/null 2>&1
          chmod +x tfsec-linux-amd64 > /dev/null 2>&1
