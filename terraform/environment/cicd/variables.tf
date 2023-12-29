@@ -36,3 +36,13 @@ variable "github_token" {
   sensitive   = true
   default     = ""
 }
+
+variable "tfstate_bucket" {
+  description = "tfstate bucket"
+  default = "hrdimibucket2222222"
+}
+
+variable "region" {
+  description = "region"
+  default = "eu-west-1"
+}

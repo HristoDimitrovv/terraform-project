@@ -1,3 +1,13 @@
+variable "tfstate_bucket" {
+  description = "tfstate bucket"
+  default = "hrdimibucket2222222"
+}
+
+variable "region" {
+  description = "region"
+  default = "eu-west-1"
+}
+
 variable "env" {
   description = "Environment name - core, shared"
 }
