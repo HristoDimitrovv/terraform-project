@@ -12,7 +12,7 @@ variable "solution_name" {
 
 variable "repo_name" {
   description = "Name of the Codecommit Repository"
-  default     = "my-repo"
+  default     = "terraform-project"
 }
 
 variable "branch_name" {

@@ -19,17 +19,15 @@ resource "aws_codepipeline" "pipeline" {
       name             = "SourceAction"
       category         = "Source"
       owner            = "AWS"
-      provider         = "CodeCommit"
+      provider         = "CodeStarSourceConnection"
       version          = "1"
       output_artifacts = ["SourceOutput"]
 
       configuration = {
-        RepositoryName       = var.repo_name
-        BranchName           = var.branch_name
-        PollForSourceChanges = "false"
+        ConnectionArn    = aws_codestarconnections_connection.github.arn
+        FullRepositoryId = "HristoDimitrovv/terraform-project"
+        BranchName       = var.branch_name
       }
-
-      run_order = 1
     }
   }
 

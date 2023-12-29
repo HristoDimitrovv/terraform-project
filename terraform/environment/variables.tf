@@ -195,7 +195,7 @@ variable "database_subnets" {
 
 variable "availability_zones" {
   type    = list(string)
-  default = ["us-east-1a", "us-east-1b"]
+  default = ["eu-west-1a", "eu-west-1b"]
 }
 
 variable "vpc_flow_log_group" {
@@ -211,7 +211,7 @@ variable "vpc_flow_log_group" {
 variable "bucket" {
   description = "Name of the S3 bucket"
   type        = string
-  default     = "hrdimibucket222222"
+  default     = "hrdimibucket2222222"
 }
 
 #########################################################
@@ -221,7 +221,7 @@ variable "bucket" {
 variable "email" {
   description = "Email address for the SNS topic"
   type        = string
-  default     = ""
+  default     = "hristo.dimitrovv1@gmail.com"
 }
 
 variable "sns_topic_name" {

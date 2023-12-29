@@ -3,7 +3,7 @@
 variable "bucket_name" {
   description = "Bucket name"
   type        = string
-  default     = "hrdimibucket-for-codepipeline1"
+  default     = "hrdimibucket-for-codepipeline11"
 }
 
 variable "solution_name" {
@@ -28,5 +28,11 @@ variable "env" {
 variable "solution_source_path" {
   description = "Relative path to the solution folder with terraform code e.g. environment/core/shared/solutions/ad_services"
   type        = string
-  default     = "./"
+  default     = "./terraform/environment"
+}
+
+variable "github_token" {
+  description = "GitHub personal access token"
+  sensitive   = true
+  default     = ""
 }

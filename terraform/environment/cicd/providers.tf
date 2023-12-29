@@ -20,7 +20,7 @@ terraform {
   #   backend "s3" {
   #     bucket = "hrdimibucket2222"
   #     key    = "./services-terraform.tfstate"
-  #     region = "us-east-1"
+  #     region = "eu-west-1"
   #   }
 
 }

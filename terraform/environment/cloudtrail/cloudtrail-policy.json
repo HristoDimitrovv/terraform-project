@@ -5,18 +5,13 @@
       "Sid": "AWSCloudTrailCreateLogStream",
       "Effect": "Allow",
       "Action": ["logs:CreateLogStream"],
-      "Resource": ["arn:aws:logs:us-east-1:*:*:log-stream:*"]
+      "Resource": ["arn:aws:logs:eu-west-1:*:*:log-stream:*"]
     },
     {
       "Sid": "AWSCloudTrailPutLogEvents",
       "Effect": "Allow",
       "Action": ["logs:PutLogEvents"],
-      "Resource": ["arn:aws:logs:us-east-1:*:*:log-stream:*"]
+      "Resource": ["arn:aws:logs:eu-west-1:*:*:log-stream:*"]
     }
   ]
 }
-
-
-
-  
-  

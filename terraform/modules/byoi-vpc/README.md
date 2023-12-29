@@ -20,7 +20,7 @@ module "byoi_vpc" {
 
   vpc_name                 = "vpc_name"
   cidr                     = "10.1.0.0/16"
-  availability_zones       = ["us-east-1a", "us-east-1b"]
+  availability_zones       = ["eu-west-1a", "eu-west-1b"]
   public_subnets           = ["10.1.11.0/24", "10.1.12.0/24"]
   private_subnets          = ["10.1.21.0/24", "10.1.22.0/24"]
   database_subnets         = ["10.1.31.0/24", "10.1.32.0/24"]
@@ -42,7 +42,7 @@ module "byoi_vpc" {
 
   vpc_name                 = "vpc_name"
   cidr                     = "10.1.0.0/16"
-  availability_zones       = ["us-east-1a"]
+  availability_zones       = ["eu-west-1a"]
   public_subnets           = ["10.1.11.0/24"]
   create_private_subnets   = false
   create_database_subnets  = false
