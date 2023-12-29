@@ -226,7 +226,7 @@ variable "region" {
 variable "email" {
   description = "Email address for the SNS topic"
   type        = string
-  default     = "hristo.dimitrovv1@gmail.com"
+  default     = ""
 }
 
 variable "sns_topic_name" {
