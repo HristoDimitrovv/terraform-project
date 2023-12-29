@@ -9,7 +9,7 @@ variable "bucket_name" {
 variable "solution_name" {
   description = "Solution name used in the naming convention of codepipeline"
   type        = string
-  default     = "test-get-source-codecommit"
+  default     = "github"
 }
 variable "tf_version" {
   description = "Terraform version used to apply in the code"
@@ -23,7 +23,7 @@ variable "prefix" {
 variable "env" {
   description = "Environment or account name - shared, dev, uat or prod"
   type        = string
-  default     = "shared"
+  default     = "dev"
 }
 variable "solution_source_path" {
   description = "Relative path to the solution folder with terraform code e.g. environment/core/shared/solutions/ad_services"

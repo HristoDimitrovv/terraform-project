@@ -1,5 +1,5 @@
 resource "aws_codepipeline" "pipeline" {
-  name     = "${var.prefix}-${var.env}-cc-${var.solution_name}"
+  name     = "${var.prefix}-${var.env}-${var.solution_name}"
   role_arn = var.codepipeline_role_arn
 
   artifact_store {
@@ -45,7 +45,7 @@ resource "aws_codepipeline" "pipeline" {
       run_order        = 1
 
       configuration = {
-        ProjectName = "${var.prefix}-${var.env}-cb-${var.solution_name}-init-plan"
+        ProjectName = "${var.prefix}-${var.env}-${var.solution_name}-init-plan"
       }
     }
   }
@@ -76,7 +76,7 @@ resource "aws_codepipeline" "pipeline" {
       run_order       = 1
 
       configuration = {
-        ProjectName = "${var.prefix}-${var.env}-cb-${var.solution_name}-apply"
+        ProjectName = "${var.prefix}-${var.env}-${var.solution_name}-apply"
       }
     }
   }
