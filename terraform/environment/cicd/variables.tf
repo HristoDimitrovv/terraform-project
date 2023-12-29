@@ -31,15 +31,10 @@ variable "solution_source_path" {
   default     = "./terraform/environment"
 }
 
-variable "github_token" {
-  description = "GitHub personal access token"
-  sensitive   = true
-  default     = ""
-}
-
-variable "tfstate_bucket" {
-  description = "tfstate bucket"
-  default = "hrdimibucket2222222"
+variable "bucket" {
+  description = "Name of the S3 bucket"
+  type        = string
+  default     = "hrdimibucket2222222"
 }
 
 variable "region" {

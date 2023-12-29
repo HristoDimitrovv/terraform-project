@@ -214,6 +214,11 @@ variable "bucket" {
   default     = "hrdimibucket2222222"
 }
 
+variable "region" {
+  description = "region"
+  default = "eu-west-1"
+}
+
 #########################################################
 
 ### SNS Topic variables ### 

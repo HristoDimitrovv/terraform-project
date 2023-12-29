@@ -1,6 +1,7 @@
-variable "tfstate_bucket" {
-  description = "tfstate bucket"
-  default = "hrdimibucket2222222"
+variable "bucket" {
+  description = "Name of the S3 bucket"
+  type        = string
+  default     = "hrdimibucket2222222"
 }
 
 variable "region" {
