@@ -1,14 +1,3 @@
-variable "bucket" {
-  description = "Name of the S3 bucket"
-  type        = string
-  default     = "hrdimibucket2222222"
-}
-
-variable "region" {
-  description = "region"
-  default = "eu-west-1"
-}
-
 variable "env" {
   description = "Environment name - core, shared"
 }
@@ -19,11 +8,6 @@ variable "prefix" {
 
 variable "solution_name" {
   description = "Service name - iam, ec2, tableu"
-}
-
-variable "repo_name" {
-  description = "Name of the Codecommit Repository"
-  default     = "terraform-project"
 }
 
 variable "branch_name" {

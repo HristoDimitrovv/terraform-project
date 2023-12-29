@@ -7,12 +7,13 @@ phases:
       - echo "Installing Terraform..."
       - wget https://releases.hashicorp.com/terraform/${tf_version}/terraform_${tf_version}_linux_amd64.zip  # Example download link for Linux
       - unzip terraform_${tf_version}_linux_amd64.zip -d /usr/local/bin  # Extract Terraform binary to a directory in PATH
-      - terraform --version  # Verify Terraform installation
+      - terraform --version 
   pre_build:
     commands:
       - echo "Pre-build phase..."
   build:
     commands:
       - cd ${solutions_source_path}  # Change to the directory where source code is fetched
-      - terraform init -backend-config="bucket=hrdimibucket2222222" -backend-config="region=eu-west-1"   # Initialize Terraform in the fetched source directory
-      - terraform plan -var bucket=hrdimibucket2222222 -var region=eu-west-1 -out=tfplan  # Generate the Terraform plan
+      - terraform init -backend-config="bucket=hrdimibucket2222222" -backend-config="key=./services-terraform.tfstate" -backend-config="region=eu-west-1"  
+      - terraform refresh -var "bucket=hrdimibucket2222222" -var "region=eu-west-1"
+      - terraform plan -var bucket=hrdimibucket2222222 -var region=eu-west-1 -out=tfplan 
