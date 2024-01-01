@@ -211,7 +211,7 @@ variable "vpc_flow_log_group" {
 variable "bucket" {
   description = "Name of the S3 bucket"
   type        = string
-  default     = "hrdimibucket2222222"
+  default     = "hrdimibucket22222222"
 }
 
 variable "region" {
@@ -226,7 +226,7 @@ variable "region" {
 variable "email" {
   description = "Email address for the SNS topic"
   type        = string
-  default     = "hristo.dimitrovv1@gmail.com"
+  default     = ""
 }
 
 variable "sns_topic_name" {

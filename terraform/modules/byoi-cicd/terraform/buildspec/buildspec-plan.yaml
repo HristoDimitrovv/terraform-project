@@ -14,6 +14,7 @@ phases:
   build:
     commands:
       - cd ${solutions_source_path}
-      - terraform init -no-color -input=false -backend-config=bucket=hrdimibucket2222222 -backend-config=key=services-terraform.tfstate -backend-config=region=eu-west-1
-      - terraform plan -var "bucket=hrdimibucket2222222" -var "region=eu-west-1" -out=tfplan
- 
+      - terraform init -backend-config="bucket=hrdimibucket22222222" -backend-config="key=services-terraform.tfstate" -backend-config="region=eu-west-1" -input=false
+      - timestamp=$(date '+%Y%m%d%H%M')
+      - terraform plan -var "bucket=hrdimibucket2222222" -var "region=eu-west-1" -out="tf_plan-${timestamp}.txt"
+      - aws s3 cp tf_plan-${timestamp}.txt s3://hrdimibucket-for-codepipeline11/

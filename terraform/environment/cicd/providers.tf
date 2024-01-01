@@ -19,7 +19,7 @@ terraform {
   #   ### Backend config got tfstate file to be send to S3 ###
   #   backend "s3" {
   #     bucket = "hrdimibucket2222"
-  #     key    = "./services-terraform.tfstate"
+  #     key    = "cicd-terraform.tfstate"
   #     region = "eu-west-1"
   #   }
 

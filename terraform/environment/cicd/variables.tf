@@ -34,7 +34,7 @@ variable "solution_source_path" {
 variable "bucket" {
   description = "Name of the S3 bucket"
   type        = string
-  default     = "hrdimibucket2222222"
+  default     = "hrdimibucket22222222"
 }
 
 variable "region" {
