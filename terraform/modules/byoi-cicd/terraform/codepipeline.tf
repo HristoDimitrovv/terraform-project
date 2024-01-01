@@ -27,7 +27,6 @@ resource "aws_codepipeline" "pipeline" {
         ConnectionArn        = aws_codestarconnections_connection.github.arn
         FullRepositoryId     = "HristoDimitrovv/terraform-project"
         BranchName           = var.branch_name
-        PollForSourceChanges = "false"
       }
     }
   }
