@@ -24,9 +24,9 @@ resource "aws_codepipeline" "pipeline" {
       output_artifacts = ["SourceOutput"]
 
       configuration = {
-        ConnectionArn        = aws_codestarconnections_connection.github.arn
-        FullRepositoryId     = "HristoDimitrovv/terraform-project"
-        BranchName           = var.branch_name
+        ConnectionArn    = aws_codestarconnections_connection.github.arn
+        FullRepositoryId = "HristoDimitrovv/terraform-project"
+        BranchName       = var.branch_name
       }
     }
   }

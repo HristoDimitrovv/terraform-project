@@ -6,6 +6,12 @@ variable "bucket_name" {
   default     = "hrdimibucket-for-codepipeline11"
 }
 
+variable "bucket_name1" {
+  description = "Bucket name"
+  type        = string
+  default     = "hrdimibucket-for-codepipeline11"
+}
+
 variable "solution_name" {
   description = "Solution name used in the naming convention of codepipeline"
   type        = string
@@ -29,15 +35,4 @@ variable "solution_source_path" {
   description = "Relative path to the solution folder with terraform code e.g. environment/core/shared/solutions/ad_services"
   type        = string
   default     = "./terraform/environment"
-}
-
-variable "bucket" {
-  description = "Name of the S3 bucket"
-  type        = string
-  default     = "hrdimibucket22222222"
-}
-
-variable "region" {
-  description = "region"
-  default     = "eu-west-1"
 }

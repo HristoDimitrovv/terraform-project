@@ -181,6 +181,7 @@ variable "public_subnets" {
   default     = ["10.1.11.0/24", "10.1.12.0/24"]
 }
 
+# tflint-ignore: terraform_unused_declarations
 variable "private_subnets" {
   description = "Map from availability zone to the list of subnets correspoding to that AZ"
   type        = list(string)
@@ -214,6 +215,7 @@ variable "bucket" {
   default     = "hrdimibucket22222222"
 }
 
+# tflint-ignore: terraform_unused_declarations
 variable "region" {
   description = "region"
   default     = "eu-west-1"
