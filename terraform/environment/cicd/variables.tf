@@ -6,6 +6,12 @@ variable "bucket_name" {
   default     = "hrdimibucket-for-codepipeline11"
 }
 
+variable "bucket_name1" {
+  description = "Bucket name"
+  type        = string
+  default     = "hrdimibucket-for-codepipeline11"
+}
+
 variable "solution_name" {
   description = "Solution name used in the naming convention of codepipeline"
   type        = string

@@ -1,10 +1,11 @@
 
 ### Public subnets for each AZ ###
 resource "aws_subnet" "public_subnets" {
-  count             = var.create_public_subnets ? length(var.availability_zones) : 0
-  vpc_id            = aws_vpc.byoi_vpc.id
-  cidr_block        = element(var.public_subnets, count.index)
-  availability_zone = element(var.availability_zones, count.index)
+  count                   = var.create_public_subnets ? length(var.availability_zones) : 0
+  vpc_id                  = aws_vpc.byoi_vpc.id
+  cidr_block              = element(var.public_subnets, count.index)
+  availability_zone       = element(var.availability_zones, count.index)
+  map_public_ip_on_launch = true
 }
 
 
