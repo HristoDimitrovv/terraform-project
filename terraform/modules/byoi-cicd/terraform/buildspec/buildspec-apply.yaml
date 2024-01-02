@@ -19,4 +19,4 @@ phases:
       - terraform init -backend-config="bucket=hrdimibucket22222222" -backend-config="key=services-terraform.tfstate" -backend-config="region=eu-west-1" -input=false
       - timestamp=$(date '+%Y%m%d%H%M')
       - terraform apply -var "bucket=hrdimibucket2222222" -var "region=eu-west-1" -out="tf_apply-${timestamp}.txt"
-      - aws s3 cp tf_apply-${timestamp}.txt s3://hrdimibucket-for-codepipeline11/  
+      - aws s3 cp tf_apply-${timestamp}.txt s3://hrdimibucket-for-codepipeline11/
