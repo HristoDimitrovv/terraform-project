@@ -16,6 +16,11 @@ variable "enable_dns_hostnames" {
   default = null
 }
 
+variable "enable_dns_support" {
+  type    = bool
+  default = null
+}
+
 variable "create_public_subnets" {
   type    = bool
   default = true

@@ -69,6 +69,12 @@ variable "name" {
   type    = string
   default = "byoi-asg"
 }
+
+variable "instance_name" {
+  type    = string
+  default = "web-app"
+}
+
 variable "max_size" {
   type    = number
   default = 2
@@ -228,7 +234,7 @@ variable "region" {
 variable "email" {
   description = "Email address for the SNS topic"
   type        = string
-  default     = ""
+  default     = "hristo.dimitrov@softwareone.com"
 }
 
 variable "sns_topic_name" {

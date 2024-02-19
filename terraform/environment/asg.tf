@@ -29,5 +29,6 @@ module "byoi_asg" {
     "Patch Group" = "install-patchgroup-am"
     Environment   = var.environment
     Deployment    = var.deployment
+    Name          = var.instance_name
   }
 }

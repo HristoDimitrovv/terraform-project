@@ -12,6 +12,14 @@
       "Effect": "Allow",
       "Action": ["logs:PutLogEvents"],
       "Resource": ["arn:aws:logs:eu-west-1:*:*:log-stream:*"]
+    },
+    {
+      "Effect": "Allow",
+      "Action": "s3:PutObject",
+      "Resource": [
+        "arn:aws:s3:::my-cloud-trail-bucket-21-12-202402319",
+        "arn:aws:s3:::my-cloud-trail-bucket-21-12-202402319/*"
+      ]
     }
   ]
 }

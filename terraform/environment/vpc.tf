@@ -7,6 +7,8 @@ module "byoi_vpc" {
   private_subnets        = var.private_subnets
   database_subnets       = var.database_subnets
   vpc_flow_log_group     = var.vpc_flow_log_group
+  enable_dns_support     = true
+  enable_dns_hostnames   = true
   create_private_subnets = false
   create_nat_gateway     = false
 
